@@ -8,7 +8,7 @@ class AppRoutes {
   static const String login = '/login';
 
   static final routes = [
-    GetPage(name: home, page: () => HomeView()),
+    GetPage(name: home, page: () => const HomeView()),
     GetPage(name: login, page: () => LoginView()),
   ];
 }

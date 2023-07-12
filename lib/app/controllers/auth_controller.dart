@@ -32,7 +32,7 @@ class AuthController extends GetxController {
       );
 
       // Check the response status
-     if (response.statusCode == 200) {
+      if (response.statusCode == 200) {
         // Parse the response data
         final responseData = json.decode(response.body);
 
@@ -54,7 +54,7 @@ class AuthController extends GetxController {
           // Handle null response data
           // DialogService.showErrorDialog('Invalid response data');
         }
-      } 
+      }
     } catch (e) {
       debugPrint('Error Occured  $e');
     } finally {

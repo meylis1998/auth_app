@@ -15,7 +15,7 @@ class LoadingIndicator extends StatelessWidget {
   }
 
   static void show() {
-    Get.dialog(LoadingIndicator(), barrierDismissible: false);
+    Get.dialog(const LoadingIndicator(), barrierDismissible: false);
   }
 
   static void hide() {
