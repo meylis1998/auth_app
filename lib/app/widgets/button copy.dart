@@ -1,5 +1,4 @@
 import 'package:auth_app/app/utils/constants.dart';
-import 'package:auth_app/app/widgets/indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -54,29 +53,23 @@ class _MyButtonState extends State<MyButton> with TickerProviderStateMixin {
               padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
               child: AnimatedSize(
                 duration: const Duration(milliseconds: 200),
-                child: (widget.inProgress ?? false)
-                    ? Center(
-                        child: Indicator(
-                        size: widget.indicatorSize ?? 0.6,
-                        color: Colors.white,
-                      ))
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          widget.textSpan == null
-                              ? Text(
-                                  '${widget.text}',
-                                  style: GoogleFonts.rubik(
-                                    textStyle: Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(
-                                          color: AppConstants.whiteColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    widget.textSpan == null
+                        ? Text(
+                            '${widget.text}',
+                            style: GoogleFonts.rubik(
+                              textStyle: Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(
+                                    color: AppConstants.whiteColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                )
-                              : widget.textSpan!
-                        ],
-                      ),
+                            ),
+                          )
+                        : widget.textSpan!
+                  ],
+                ),
               ),
             ),
           ),

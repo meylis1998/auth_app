@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class AuthController extends GetxController {
   var isLoggedIn = false.obs;
   var user = UserModel(login: '', password: '').obs;
 
-  Future<void> login(String login, String password) async {
+  Future<void> login(String login, String password, BuildContext context) async {
     try {
       // Show loading indicator while authenticating
       LoadingIndicator.show();
@@ -49,14 +51,14 @@ class AuthController extends GetxController {
           isLoggedIn.value = true;
 
           // Navigate to the home screen
+          SnackbarService.showSuccessSnackbar('Login success!');
           NavigationService.toHome();
         } else {
           // Login failed due to incorrect email or password
-          DialogService.showErrorDialog('Invalid email or password');
+          SnackbarService.showErrorSnackbar('Invalid email or password');
         }
-      } else if (response.statusCode == 401) {
-        // Handle unauthorized request
-        DialogService.showErrorDialog('Invalid credentials');
+      } else {
+        SnackbarService.showErrorSnackbar('Invalid email or password');
       }
     } catch (e) {
       debugPrint('Error Occured  $e');

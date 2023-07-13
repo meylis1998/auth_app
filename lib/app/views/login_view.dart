@@ -84,10 +84,8 @@ class LoginView extends GetView<AuthController> {
                     ),
                   ),
                   const SizedBox(height: 5),
-                 
                   MyTextFormField(
                     controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
                     inputFormatters: const [],
                     label: emailText,
                     hasPrefixIcon: false,
@@ -95,6 +93,7 @@ class LoginView extends GetView<AuthController> {
                   Obx(
                     () => MyTextFormField(
                       controller: _passwordController,
+                      keyboardType: TextInputType.visiblePassword,
                       inputFormatters: const [],
                       label: passwordText,
                       isPassword: true,
@@ -139,12 +138,9 @@ class LoginView extends GetView<AuthController> {
                           inProgress: isLoading,
                           indicatorSize: 10,
                           onTap: () async {
-                            if (formKey.currentState!.validate()) {
                               String email = _emailController.text;
                               String password = _passwordController.text;
-
-                              controller.login(email, password);
-                            }
+                              controller.login(email, password, context);
                           },
                         ),
                   Row(
@@ -197,7 +193,7 @@ class LoginView extends GetView<AuthController> {
                           signUp,
                           style: GoogleFonts.rubik(
                             textStyle: Theme.of(context).primaryTextTheme.bodyMedium?.copyWith(
-                                  fontSize: 17,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: AppConstants.accentColor,
                                 ),
