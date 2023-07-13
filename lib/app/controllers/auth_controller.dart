@@ -51,9 +51,12 @@ class AuthController extends GetxController {
           // Navigate to the home screen
           NavigationService.toHome();
         } else {
-          // Handle null response data
-          // DialogService.showErrorDialog('Invalid response data');
+          // Login failed due to incorrect email or password
+          DialogService.showErrorDialog('Invalid email or password');
         }
+      } else if (response.statusCode == 401) {
+        // Handle unauthorized request
+        DialogService.showErrorDialog('Invalid credentials');
       }
     } catch (e) {
       debugPrint('Error Occured  $e');

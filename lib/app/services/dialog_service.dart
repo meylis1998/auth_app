@@ -1,3 +1,4 @@
+import 'package:auth_app/app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,12 @@ class DialogService {
         content: Text(errorMessage),
         actions: [
           ElevatedButton(
-            child: const Text('OK'),
+            child: const Text(
+              'OK',
+              style: TextStyle(
+                color: AppConstants.whiteColor
+              ),
+            ),
             onPressed: () {
               Get.back();
             },
